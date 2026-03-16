@@ -35,5 +35,9 @@ public class Cliente {
 	private Endereco endereco;
 	@OneToMany(orphanRemoval = true, cascade = CascadeType.ALL)
 	private List<Telefone> telefones = new ArrayList<>();
+	public Long getId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
