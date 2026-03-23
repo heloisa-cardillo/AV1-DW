@@ -1,4 +1,4 @@
-package com.autobots.automanager.modelo;
+package com.autobots.automanager.utilitarios;
 
 public class StringVerificadorNulo {
 

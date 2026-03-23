@@ -1,6 +1,6 @@
 package com.autobots.automanager.modelo;
-
 import com.autobots.automanager.entidades.Cliente;
+import com.autobots.automanager.utilitarios.StringVerificadorNulo;
 
 public class ClienteAtualizador {
 	private StringVerificadorNulo verificador = new StringVerificadorNulo();

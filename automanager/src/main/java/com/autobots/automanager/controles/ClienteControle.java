@@ -11,11 +11,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.autobots.automanager.entidades.Cliente;
 import com.autobots.automanager.modelo.ClienteAtualizador;
-import com.autobots.automanager.modelo.ClienteSelecionador;
 import com.autobots.automanager.repositorios.ClienteRepositorio;
+import com.autobots.automanager.utilitarios.ClienteSelecionador;
 
 @RestController
 @RequestMapping("/cliente")
