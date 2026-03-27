@@ -1,0 +1,29 @@
+BASE URL: http://localhost:8080
+
+CLIENTE
+GET    /cliente/clientes
+GET    /cliente/cliente/{id}
+POST   /cliente/cadastro
+PUT    /cliente/atualizar
+DELETE /cliente/excluir
+
+DOCUMENTO
+GET    /documento
+GET    /documento/{id}
+POST   /documento/cadastro
+PUT    /documento/atualizar
+DELETE /documento/excluir
+
+ENDERECO
+GET    /endereco
+GET    /endereco/{id}
+POST   /endereco/cadastro
+PUT    /endereco/atualizar
+DELETE /endereco/excluir
+
+TELEFONE
+GET    /telefone
+GET    /telefone/{id}
+POST   /telefone/cadastro
+PUT    /telefone/atualizar
+DELETE /telefone/excluir

@@ -1,0 +1,8 @@
+Compatibilidade de versões entre Java, Spring Boot e Lombok
+
+Java     Spring Boot        Lombok
+--------------------------------------
+17       2.6.x / 3.0.x     1.18.24+
+21       3.2.x+             1.18.30+
+25       3.5.x+             1.18.38+
+
