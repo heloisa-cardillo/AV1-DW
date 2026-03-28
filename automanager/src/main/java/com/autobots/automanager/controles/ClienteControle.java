@@ -22,7 +22,7 @@ public class ClienteControle {
     @Autowired
     private ClienteServico servico;
 
-    @GetMapping("/cliente/{id}")
+    @GetMapping("/{id}")
     public Cliente obterCliente(@PathVariable long id) {
         return servico.obterCliente(id);
     }

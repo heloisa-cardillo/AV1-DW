@@ -2,7 +2,7 @@ BASE URL: http://localhost:8080
 
 CLIENTE
 GET    /cliente/clientes
-GET    /cliente/cliente/{id}
+GET    /cliente/{id}
 POST   /cliente/cadastro
 PUT    /cliente/atualizar
 DELETE /cliente/excluir
