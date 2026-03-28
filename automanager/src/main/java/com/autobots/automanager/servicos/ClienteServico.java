@@ -32,14 +32,14 @@ public class ClienteServico {
     }
 
     public void atualizarCliente(Cliente atualizacao) {
-        Cliente cliente = repositorio.getById(atualizacao.getId());
+        Cliente cliente = repositorio.findById(atualizacao.getId()).orElse(null);
         ClienteAtualizador atualizador = new ClienteAtualizador();
         atualizador.atualizar(cliente, atualizacao);
         repositorio.save(cliente);
     }
 
     public void excluirCliente(Cliente exclusao) {
-        Cliente cliente = repositorio.getById(exclusao.getId());
+        Cliente cliente = repositorio.findById(exclusao.getId()).orElse(null);
         repositorio.delete(cliente);
     }
 }

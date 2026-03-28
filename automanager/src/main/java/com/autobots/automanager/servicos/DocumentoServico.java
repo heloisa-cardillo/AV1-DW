@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.autobots.automanager.entidades.Cliente;
 import com.autobots.automanager.entidades.Documento;
 import com.autobots.automanager.modelo.DocumentoAtualizador;
+import com.autobots.automanager.repositorios.ClienteRepositorio;
 import com.autobots.automanager.repositorios.DocumentoRepositorio;
 
 @Service
@@ -14,6 +16,9 @@ public class DocumentoServico {
 
     @Autowired
     private DocumentoRepositorio repositorio;
+
+    @Autowired
+    private ClienteRepositorio clienteRepositorio;
 
     public Documento obterDocumento(long id) {
         return repositorio.findById(id).orElse(null);
@@ -36,6 +41,11 @@ public class DocumentoServico {
 
     public void excluirDocumento(Documento exclusao) {
         Documento documento = repositorio.findById(exclusao.getId()).orElse(null);
+        List<Cliente> clientes = clienteRepositorio.findAll();
+        for (Cliente cliente : clientes) {
+            cliente.getDocumentos().remove(documento);
+        }
+        clienteRepositorio.saveAll(clientes);
         repositorio.delete(documento);
     }
 }
