@@ -33,42 +33,65 @@ public class AutomanagerApplication {
 				return;
 			}
 
-			Calendar calendario = Calendar.getInstance();
-			calendario.set(2002, 05, 15);
-
+			// TESTE cliente 1
 			Cliente cliente = new Cliente();
-			cliente.setNome("Pedro Alcântara de Bragança e Bourbon");
-			cliente.setDataCadastro(Calendar.getInstance().getTime());
-			cliente.setDataNascimento(calendario.getTime());
-			cliente.setNomeSocial("Dom Pedro");
+			cliente.setNome("José Ricardo");
+			cliente.setNomeSocial("O Coelho Ousado");
+			cliente.setDataCadastro(new java.util.Date(2024 - 1900, 2, 11));
+			Calendar nascimentoCliente = Calendar.getInstance();
+			nascimentoCliente.set(1990, 4, 15);
+			cliente.setDataNascimento(nascimentoCliente.getTime());
 
 			Telefone telefone = new Telefone();
-			telefone.setDdd("21");
-			telefone.setNumero("981234576");
+			telefone.setDdd("12");
+			telefone.setNumero("9981828356");
 			cliente.getTelefones().add(telefone);
 
 			Endereco endereco = new Endereco();
-			endereco.setEstado("Rio de Janeiro");
-			endereco.setCidade("Rio de Janeiro");
-			endereco.setBairro("Copacabana");
-			endereco.setRua("Avenida Atlântica");
-			endereco.setNumero("1702");
-			endereco.setCodigoPostal("22021001");
-			endereco.setInformacoesAdicionais("Hotel Copacabana palace");
+			endereco.setRua("Avenida Engenheiro José Longo");
+			endereco.setBairro("São Dimas");
+			endereco.setCidade("São José dos Campos");
+			endereco.setEstado("SP");
+			endereco.setNumero("");
+			endereco.setCodigoPostal("12245-000");
 			cliente.setEndereco(endereco);
 
-			Documento rg = new Documento();
-			rg.setTipo("RG");
-			rg.setNumero("1500");
-
-			Documento cpf = new Documento();
-			cpf.setTipo("RG");
-			cpf.setNumero("00000000001");
-
-			cliente.getDocumentos().add(rg);
-			cliente.getDocumentos().add(cpf);
+			Documento documento = new Documento();
+			documento.setTipo("RG");
+			documento.setNumero("9981828356");
+			cliente.getDocumentos().add(documento);
 
 			repositorio.save(cliente);
+
+			// TESTE cliente 2
+			Cliente danielle = new Cliente();
+			danielle.setNome("Danielle");
+			danielle.setNomeSocial("A Coelha Carinhosa");
+			danielle.setDataCadastro(new java.util.Date(2024 - 1900, 2, 11));
+			Calendar nascimentoDanielle = Calendar.getInstance();
+			nascimentoDanielle.set(1992, 7, 23);
+			danielle.setDataNascimento(nascimentoDanielle.getTime());
+
+			Telefone telefoneDanielle = new Telefone();
+			telefoneDanielle.setDdd("12");
+			telefoneDanielle.setNumero("9981828356");
+			danielle.getTelefones().add(telefoneDanielle);
+
+			Endereco enderecoDanielle = new Endereco();
+			enderecoDanielle.setRua("Avenida Engenheiro José Longo");
+			enderecoDanielle.setBairro("São Dimas");
+			enderecoDanielle.setCidade("São José dos Campos");
+			enderecoDanielle.setEstado("SP");
+			enderecoDanielle.setNumero("");
+			enderecoDanielle.setCodigoPostal("12245-000");
+			danielle.setEndereco(enderecoDanielle);
+
+			Documento documentoDanielle = new Documento();
+			documentoDanielle.setTipo("RG");
+			documentoDanielle.setNumero("00000000001");
+			danielle.getDocumentos().add(documentoDanielle);
+
+			repositorio.save(danielle);
 		}
 	}
 

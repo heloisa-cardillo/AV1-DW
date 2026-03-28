@@ -13,42 +13,37 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.autobots.automanager.entidades.Endereco;
-import com.autobots.automanager.modelo.EnderecoAtualizador;
-import com.autobots.automanager.repositorios.EnderecoRepositorio;
+import com.autobots.automanager.servicos.EnderecoServico;
 
 @RestController
 @RequestMapping("/endereco")
 public class EnderecoControle {
 
-	@Autowired
-	private EnderecoRepositorio repositorio;
+    @Autowired
+    private EnderecoServico servico;
 
-	@GetMapping("/endereco/{id}")
-	public Endereco obterEndereco(@PathVariable long id) {
-		return repositorio.findById(id).orElse(null);
-	}
+    @GetMapping("/endereco/{id}")
+    public Endereco obterEndereco(@PathVariable long id) {
+        return servico.obterEndereco(id);
+    }
 
-	@GetMapping
-	public List<Endereco> obterEnderecos() {
-		return repositorio.findAll();
-	}
+    @GetMapping
+    public List<Endereco> obterEnderecos() {
+        return servico.obterEnderecos();
+    }
 
-	@PostMapping("/cadastro")
-	public void cadastrarEndereco(@RequestBody Endereco endereco) {
-		repositorio.save(endereco);
-	}
+    @PostMapping("/cadastro")
+    public void cadastrarEndereco(@RequestBody Endereco endereco) {
+        servico.cadastrarEndereco(endereco);
+    }
 
-	@PutMapping("/atualizar")
-	public void atualizarEndereco(@RequestBody Endereco atualizacao) {
-		Endereco endereco = repositorio.findById(atualizacao.getId()).orElse(null);
-		EnderecoAtualizador atualizador = new EnderecoAtualizador();
-		atualizador.atualizar(endereco, atualizacao);
-		repositorio.save(endereco);
-	}
+    @PutMapping("/atualizar")
+    public void atualizarEndereco(@RequestBody Endereco atualizacao) {
+        servico.atualizarEndereco(atualizacao);
+    }
 
-	@DeleteMapping("/excluir")
-	public void excluirEndereco(@RequestBody Endereco exclusao) {
-		Endereco endereco = repositorio.findById(exclusao.getId()).orElse(null);
-		repositorio.delete(endereco);
-	}
+    @DeleteMapping("/excluir")
+    public void excluirEndereco(@RequestBody Endereco exclusao) {
+        servico.excluirEndereco(exclusao);
+    }
 }

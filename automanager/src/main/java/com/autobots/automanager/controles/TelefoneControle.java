@@ -13,42 +13,37 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.autobots.automanager.entidades.Telefone;
-import com.autobots.automanager.modelo.TelefoneAtualizador;
-import com.autobots.automanager.repositorios.TelefoneRepositorio;
+import com.autobots.automanager.servicos.TelefoneServico;
 
 @RestController
 @RequestMapping("/telefone")
 public class TelefoneControle {
 
-	@Autowired
-	private TelefoneRepositorio repositorio;
+    @Autowired
+    private TelefoneServico servico;
 
-	@GetMapping("/telefone/{id}")
-	public Telefone obterTelefone(@PathVariable long id) {
-		return repositorio.findById(id).orElse(null);
-	}
+    @GetMapping("/telefone/{id}")
+    public Telefone obterTelefone(@PathVariable long id) {
+        return servico.obterTelefone(id);
+    }
 
-	@GetMapping
-	public List<Telefone> obterTelefones() {
-		return repositorio.findAll();
-	}
+    @GetMapping
+    public List<Telefone> obterTelefones() {
+        return servico.obterTelefones();
+    }
 
-	@PostMapping("/cadastro")
-	public void cadastrarTelefone(@RequestBody Telefone telefone) {
-		repositorio.save(telefone);
-	}
+    @PostMapping("/cadastro")
+    public void cadastrarTelefone(@RequestBody Telefone telefone) {
+        servico.cadastrarTelefone(telefone);
+    }
 
-	@PutMapping("/atualizar")
-	public void atualizarTelefone(@RequestBody Telefone atualizacao) {
-		Telefone telefone = repositorio.findById(atualizacao.getId()).orElse(null);
-		TelefoneAtualizador atualizador = new TelefoneAtualizador();
-		atualizador.atualizar(telefone, atualizacao);
-		repositorio.save(telefone);
-	}
+    @PutMapping("/atualizar")
+    public void atualizarTelefone(@RequestBody Telefone atualizacao) {
+        servico.atualizarTelefone(atualizacao);
+    }
 
-	@DeleteMapping("/excluir")
-	public void excluirTelefone(@RequestBody Telefone exclusao) {
-		Telefone telefone = repositorio.findById(exclusao.getId()).orElse(null);
-		repositorio.delete(telefone);
-	}
+    @DeleteMapping("/excluir")
+    public void excluirTelefone(@RequestBody Telefone exclusao) {
+        servico.excluirTelefone(exclusao);
+    }
 }
